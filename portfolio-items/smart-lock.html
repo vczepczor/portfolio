@@ -133,52 +133,51 @@
               <h2>Innovative Digital Platform</h2>
 
               <div class="meta-info">
-                <span class="date"><i class="bi bi-calendar"></i> March 15, 2024</span>
-                <span class="category"><i class="bi bi-tag"></i> Web Development</span>
-                <span class="client"><i class="bi bi-building"></i> TechCorp Solutions</span>
+                <span class="date"><i class="bi bi-calendar"></i>Leden - Květen 2026</span>
+                <span class="category"><i class="bi bi-tag"></i>IoT a zabudované systémy</span>
+                <span class="client"><i class="bi bi-building"></i> Ročníkový projekt</span>
               </div>
 
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Smart Lock Door je bezpečnostní systém pro kontrolu přístupu využívající rozpoznávání obličejů v reálném čase. Projekt kombinuje hardware (Raspberry Pi 4 s Pi Camera 3) a moderní webové technologie pro vytvoření plně funkčního řešení, které dokáže identifikovat autorizované osoby a automaticky odemknout dveře.
               </p>
 
-              <h3>Project Overview</h3>
+              <h3>Přehled projektu</h3>
               <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.
+                Cílem projektu bylo vytvořit komplexní bezpečnostní systém s intuitivním uživatelským rozhraním. Systém pracuje jako standalone zařízení připojené k 7" dotykovému displeji a elektromagnetickému zámku. Uživatel se postaví před kameru, systém rozpozná jeho obličej, a pokud je osoba autorizovaná, automaticky se odemkne zámek. Veškeré pokusy o přístup (úspěšné i neúspěšné) se logují do databáze včetně fotografie a časového razítka.
               </p>
 
               <div class="highlights-box">
-                <h4>Key Highlights</h4>
+                <h4>Klíčové Vlastnosti</h4>
                 <ul>
-                  <li><i class="bi bi-check-circle"></i> Responsive design across all devices</li>
-                  <li><i class="bi bi-check-circle"></i> Advanced user authentication system</li>
-                  <li><i class="bi bi-check-circle"></i> Real-time data synchronization</li>
-                  <li><i class="bi bi-check-circle"></i> Optimized performance and loading speed</li>
-                  <li><i class="bi bi-check-circle"></i> Comprehensive admin dashboard</li>
+                  <li><i class="bi bi-check-circle"></i> Rozpoznávání obličejů v reálném čase pomocí OpenCV a face_recognition</li>
+                  <li><i class="bi bi-check-circle"></i> Admin dashboard pro správu uživatelů a zobrazení historie přístupů</li>
+                  <li><i class="bi bi-check-circle"></i> Automatické logování všech pokusů do MariaDB databáze</li>
+                  <li><i class="bi bi-check-circle"></i> Live video stream z kamery s vysokým rozlišením</li>
                 </ul>
               </div>
 
-              <h3>Technical Implementation</h3>
+              <h3>Technická Implementace</h3>
               <p>
-                Totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-              </p>
+                Backend je postaven na Python frameworku FastAPI, který zajišťuje REST API komunikaci mezi frontendem a hardwarem. Pro rozpoznávání obličejů využívám knihovnu face_recognition postavené na dlib, která dokáže detekovat obličeje a porovnat je s uloženými vzory v databázi. Frontend je vytvořen v Reactu s Tailwind CSS pro moderní a responzivní uživatelské rozhraní. Raspberry Pi ovládá elektromagnetický zámek přes GPIO piny a veškerá data včetně fotografií pokusů o přístup se ukládají do MariaDB databáze. Jednou z největších výzev bylo správné ošetření barevných formátů (BGR/RGB konverze) mezi kamerou a face recognition knihovnou, optimalizace detekce pro reálný čas, a vytvoření intuitivního rozhraní pro dotykový displej.
+              </p>  
 
               <blockquote>
                 <i class="bi bi-quote quote-icon"></i>
                 <p>
-                  Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+                  Tento projekt mi ukázal, jak propojit hardware s moderními webovými technologiemi a vytvořit funkční IoT řešení. Největší satisfakce byla v okamžiku, kdy systém poprvé správně rozpoznal můj obličej a automaticky odemkl zámek.
                 </p>
                 <div class="author">
                   <img src="../assets/img/person/person-m-7.webp" alt="Author">
                   <div class="author-info">
-                    <h5>Michael Anderson</h5>
-                    <span>Project Lead</span>
+                    <h5>Václav Czepczor</h5>
+                    <span>Vývojář projektu</span>
                   </div>
                 </div>
               </blockquote>
 
               <p>
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.
+                Systém běží automaticky po startu Raspberry Pi a je připraven k použití okamžitě po zapnutí. Díky systemd službám se backend i frontend spustí na pozadí a Chromium v kiosk módu zobrazí aplikaci na celou obrazovku. Projekt demonstruje moje schopnosti v oblasti fullstack vývoje, práce s IoT zařízeními, zpracování obrazu a návrhu bezpečnostních systémů.
               </p>
 
             </div>
@@ -190,31 +189,31 @@
             <div class="sidebar" data-aos="fade-up" data-aos-delay="200">
 
               <div class="info-card">
-                <h3>Project Details</h3>
+                <h3>Detaily Projektu</h3>
                 <div class="info-item">
-                  <span class="label">Client</span>
-                  <span class="value">TechCorp Solutions</span>
+                  <span class="label">Typ</span>
+                  <span class="value">Školní projekt</span>
                 </div>
                 <div class="info-item">
-                  <span class="label">Category</span>
-                  <span class="value">Web Development</span>
+                  <span class="label">Kategorie</span>
+                  <span class="value">IoT / Embedded Systems</span>
                 </div>
                 <div class="info-item">
-                  <span class="label">Date</span>
-                  <span class="value">March 15, 2024</span>
+                  <span class="label">Datum</span>
+                  <span class="value">Leden - Duben 2026</span>
                 </div>
                 <div class="info-item">
-                  <span class="label">Duration</span>
-                  <span class="value">8 Weeks</span>
+                  <span class="label">Doba trvání</span>
+                  <span class="value">3 měsíce</span>
                 </div>
                 <div class="info-item">
-                  <span class="label">Technologies</span>
-                  <span class="value">React, Node.js, MongoDB</span>
+                  <span class="label">Technologie</span>
+                  <span class="value">Python, FastAPI, React, Tailwind CSS, MariaDB, OpenCV, Raspberry Pi 4</span>
                 </div>
-                <a href="https://www.example.com" class="btn-primary" target="_blank">
-                  <i class="bi bi-box-arrow-up-right"></i> View Live Project
+                <a href="https://github.com/TVUJ_GITHUB/Smart-Lock-Door-V1" class="btn-primary" target="_blank">
+                  <i class="bi bi-github"></i> Zobrazit na GitHub
                 </a>
-              </div>
+            </div>
 
               <div class="share-card" data-aos="fade-up" data-aos-delay="300">
                 <h3>Share This Project</h3>
