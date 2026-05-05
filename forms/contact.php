@@ -1,42 +1,45 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+// TADY ZMĚŇ E-MAIL NA SVŮJ:
+$recipient = "vaclavczepczor@gmail.com";
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'contact@example.com';
+// Zjistíme, zda byl formulář odeslán metodou POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    // Získání a očištění dat z formuláře (ochrana před škodlivým kódem)
+    $name = strip_tags(trim($_POST["name"]));
+    $name = str_replace(array("\r","\n"),array(" "," "),$name);
+    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+    $subject = trim($_POST["subject"]);
+    $message = trim($_POST["message"]);
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+    // Kontrola, zda jsou všechna pole vyplněná a e-mail je validní
+    if (empty($name) OR empty($subject) OR empty($message) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        http_response_code(400);
+        echo "Vyplňte prosím všechna pole správně a zkontrolujte svůj e-mail.";
+        exit;
+    }
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+    // Sestavení obsahu e-mailu
+    $email_content = "Nová zpráva z kontaktního formuláře:\n\n";
+    $email_content .= "Jméno: $name\n";
+    $email_content .= "Email: $email\n\n";
+    $email_content .= "Zpráva:\n$message\n";
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+    // Nastavení hlaviček (od koho e-mail přišel)
+    $email_headers = "From: $name <$email>";
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  isset($_POST['phone']) && $contact->add_message($_POST['phone'], 'Phone');
-  $contact->add_message( $_POST['message'], 'Message', 10);
+    // Samotné odeslání e-mailu pomocí funkce mail()
+    if (mail($recipient, $subject, $email_content, $email_headers)) {
+        http_response_code(200);
+        echo "OK"; // Třída "php-email-form" v některých šablonách očekává přesně tuto odpověď pro zobrazení úspěchu
+    } else {
+        http_response_code(500);
+        echo "Jejda! Něco se pokazilo a zprávu se nepodařilo odeslat. Zkuste to prosím později.";
+    }
 
-  echo $contact->send();
+} else {
+    // Pokud na soubor někdo přistoupí přímo (ne přes formulář)
+    http_response_code(403);
+    echo "K tomuto souboru nemáte přístup.";
+}
 ?>
