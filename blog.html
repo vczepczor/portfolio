@@ -22,6 +22,30 @@
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Vlastní styl pro tmavou kartu s červeným okrajem -->
+  <style>
+    .dark-blog-section {
+      background-color: #121212; /* Tmavé pozadí jako na screenshotu */
+      color: #ffffff;
+    }
+    .border-blog-card {
+      background: rgba(255, 255, 255, 0.03); /* Velmi jemný tmavý podklad */
+      border: 2px solid #e04f4f; /* Červený okraj (border) */
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .border-blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(224, 79, 79, 0.2); /* Červený nádech stínu při hoveru */
+    }
+    .border-blog-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+  </style>
 </head>
 
 <body class="blog-page">
@@ -65,101 +89,45 @@
       </div>
     </div>
 
-    <section id="blog-posts" class="blog-posts section">
+    <!-- Tmavá sekce -->
+    <section id="blog-posts" class="blog-posts section dark-blog-section" style="padding: 60px 0;">
 
       <div class="container section-title" data-aos="fade-up">
-        <span class="subtitle">Články</span>
-        <h2>Nejnovější příspěvky</h2>
-        <p>Postřehy, návody a novinky z mých projektů.</p>
+        <span class="subtitle" style="color: #e04f4f;">Články</span>
+        <h2 class="text-white">Nejnovější příspěvky</h2>
+        <p class="text-white-50">Postřehy, návody a novinky z mých projektů.</p>
       </div>
 
       <div class="container">
         <div class="row gy-5">
 
+          <!-- Karta s červeným borderem a fotkou nahoře -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="card h-100 border-0 shadow-sm" style="border-radius: 12px; overflow: hidden; background: #fff;">
-              <img src="assets/img/portfolio/portfolio-1.jpg" class="card-img-top" alt="Název článku" style="object-fit: cover; height: 220px;">
-              <div class="card-body p-4 d-flex flex-column">
-                <div class="text-muted small mb-3">
-                  <i class="bi bi-calendar-event me-1"></i> 2. Června 2026 
+            <div class="border-blog-card h-100 d-flex flex-column">
+              
+              <!-- Fotka NAD textem karty -->
+                <img src="assets/img/portfolio/linux_penguin.jpeg" alt="VirtualBox vs VMware" style="width: 100%; height: 220px; object-fit: contain; background-color: #1a1a1a; padding: 15px 0;">              <div class="card-body p-4 d-flex flex-column">
+                <div class="text-white-50 small mb-3">
+                  <i class="bi bi-calendar-event me-1"></i> 9. Června 2026 
                   <span class="mx-2">•</span> 
-                  <i class="bi bi-folder2 me-1"></i> Vývoj
+                  <i class="bi bi-folder2 me-1"></i> Virtualizace
                 </div>
                 <h4 class="card-title fw-bold mb-3">
-                  <a href="blog-single.html" class="text-dark text-decoration-none" style="transition: 0.3s;">Jak efektivně strukturovat kód v Bootstrapu</a>
+                  <a href="blog-items/blog-detail.html" class="text-white text-decoration-none" style="transition: 0.3s; font-family: 'Raleway', sans-serif;">VirtualBox vs. VMware: Proč jsem pro svou IT laborku přesedlal na VMware?</a>
                 </h4>
-                <p class="card-text text-muted mb-4">Pár osvědčených tipů a triků, jak udržet vaše HTML a CSS čisté a přehledné i u větších projektů.</p>
+                <p class="card-text text-white-50 mb-4">Proč pro simulaci sítí a stavbu kyberbezpečnostní laboratoře zapomenout na VirtualBox a přejít na profesionální řešení.</p>
                 <div class="mt-auto">
-                  <a href="blog-single.html" class="read-more d-inline-flex align-items-center text-decoration-none" style="color: var(--accent-color); font-weight: 600;">
+                  <a href="blog-items/blog-detail.html" class="read-more d-inline-flex align-items-center text-decoration-none" style="color: #e04f4f; font-weight: 600;">
                     <span class="me-2">Číst dál</span>
                     <i class="bi bi-arrow-right"></i>
                   </a>
                 </div>
               </div>
-            </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="card h-100 border-0 shadow-sm" style="border-radius: 12px; overflow: hidden; background: #fff;">
-              <img src="assets/img/portfolio/portfolio-2.jpg" class="card-img-top" alt="Název článku" style="object-fit: cover; height: 220px;">
-              <div class="card-body p-4 d-flex flex-column">
-                <div class="text-muted small mb-3">
-                  <i class="bi bi-calendar-event me-1"></i> 24. Května 2026 
-                  <span class="mx-2">•</span> 
-                  <i class="bi bi-folder2 me-1"></i> Design
-                </div>
-                <h4 class="card-title fw-bold mb-3">
-                  <a href="blog-single.html" class="text-dark text-decoration-none">Trendy ve webovém designu pro tento rok</a>
-                </h4>
-                <p class="card-text text-muted mb-4">Minimalismus, rychlost a přístupnost. Podívejte se na směry, kterými se ubírají moderní webové prezentace.</p>
-                <div class="mt-auto">
-                  <a href="blog-single.html" class="read-more d-inline-flex align-items-center text-decoration-none" style="color: var(--accent-color); font-weight: 600;">
-                    <span class="me-2">Číst dál</span>
-                    <i class="bi bi-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="card h-100 border-0 shadow-sm" style="border-radius: 12px; overflow: hidden; background: #fff;">
-              <img src="assets/img/portfolio/portfolio-3.jpg" class="card-img-top" alt="Název článku" style="object-fit: cover; height: 220px;">
-              <div class="card-body p-4 d-flex flex-column">
-                <div class="text-muted small mb-3">
-                  <i class="bi bi-calendar-event me-1"></i> 10. Května 2026 
-                  <span class="mx-2">•</span> 
-                  <i class="bi bi-folder2 me-1"></i> Marketing
-                </div>
-                <h4 class="card-title fw-bold mb-3">
-                  <a href="blog-single.html" class="text-dark text-decoration-none">Proč je důležité mít osobní portfolio</a>
-                </h4>
-                <p class="card-text text-muted mb-4">Osobní značka je v dnešní digitální době klíčová. Jak vám vlastní web může otevřít dveře k novým zakázkám.</p>
-                <div class="mt-auto">
-                  <a href="blog-single.html" class="read-more d-inline-flex align-items-center text-decoration-none" style="color: var(--accent-color); font-weight: 600;">
-                    <span class="me-2">Číst dál</span>
-                    <i class="bi bi-arrow-right"></i>
-                  </a>
-                </div>
-              </div>
             </div>
           </div>
 
         </div>
-
-        <div class="row mt-5">
-          <div class="col-12 text-center" data-aos="fade-up">
-            <nav>
-              <ul class="pagination justify-content-center">
-                <li class="page-item disabled"><a class="page-link" href="#">Předchozí</a></li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">Další</a></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-
       </div>
     </section>
 

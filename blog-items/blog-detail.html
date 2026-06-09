@@ -4,32 +4,68 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Detail článku - Václav Czepczor</title>
+  <title>VirtualBox vs. VMware - Václav Czepczor</title>
 
+  <!-- Správné cesty k CSS pro soubor ve složce blog-items/ -->
   <link href="../assets/img/favicon.png" rel="icon">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="../assets/css/main.css" rel="stylesheet">
+
+  <!-- Vlastní úprava pro tmavý režim -->
+  <style>
+    .dark-blog-details {
+      background-color: #121212 !important;
+      color: #ffffff !important;
+    }
+    .article-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+    }
+    .sidebar-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+    }
+    .custom-blockquote {
+      background: rgba(224, 79, 79, 0.1) !important;
+      border-left: 4px solid #e04f4f !important;
+      color: #e0e0e0;
+      font-style: italic;
+    }
+    .category-link {
+      color: #e0e0e0;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .category-link:hover {
+      color: #e04f4f;
+    }
+  </style>
 </head>
 
-<body class="blog-details-page">
+<body class="blog-details-page dark-blog-details">
 
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <h1 class="sitename">Václav Czepczor</h1>
+      <!-- Odkazy směrované o složku výš -->
+      <a href="../index.html" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename text-white">Václav Czepczor</h1>
       </a>
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html#hero">Domů</a></li>
-          <li><a href="index.html#about">O mně</a></li>
-          <li><a href="index.html#resume">Životopis</a></li>
-          <li><a href="index.html#services">Služby</a></li>
-          <li><a href="index.html#portfolio">Portfolio</a></li>
+          <li><a href="../index.html#hero">Domů</a></li>
+          <li><a href="../index.html#about">O mně</a></li>
+          <li><a href="../index.html#resume">Životopis</a></li>
+          <li><a href="../index.html#services">Služby</a></li>
+          <li><a href="../index.html#portfolio">Portfolio</a></li>
           <li><a href="../blog.html" class="active">Blog</a></li>
-          <li><a href="index.html#contact">Kontakt</a></li>
+          <li><a href="../index.html#contact">Kontakt</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -38,54 +74,76 @@
 
   <main class="main">
 
-    <div class="page-title light-background">
+    <div class="page-title" style="background-color: #1a1a1a; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 40px 0;">
       <div class="container">
         <nav class="breadcrumbs">
-          <ol>
-            <li><a href="index.html">Domů</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li class="current">Článek</li>
+          <ol class="mb-2 d-flex list-unstyled">
+            <li class="me-2"><a href="../index.html" style="color: #e04f4f; text-decoration: none;">Domů</a></li>
+            <li class="me-2" style="color: rgba(255,255,255,0.3);">/</li>
+            <li class="me-2"><a href="../blog.html" style="color: #e04f4f; text-decoration: none;">Blog</a></li>
+            <li class="me-2" style="color: rgba(255,255,255,0.3);">/</li>
+            <li class="current text-white-50">Článek</li>
           </ol>
         </nav>
-        <h1>Detail článku</h1>
+        <h1 class="text-white m-0">Detail článku</h1>
       </div>
     </div>
 
-    <section id="blog-details" class="blog-details section">
+    <section id="blog-details" class="blog-details section py-5">
       <div class="container">
         <div class="row g-5">
 
-          <div class="col-lg-8" data-aos="fade-up">
-            <article class="article bg-white p-4 shadow-sm" style="border-radius: 12px;">
-              <img src="../assets/img/portfolio/portfolio-1.jpg" alt="" class="img-fluid mb-4" style="border-radius: 8px; w-100">
+          <!-- ODSTRANĚNO: data-aos="fade-up" z tohoto divu -->
+          <div class="col-lg-8">
+            <article class="article article-card p-4 shadow-sm">
               
-              <div class="meta-top text-muted small mb-3">
-                <i class="bi bi-calendar-event"></i> 2. Června 2026 &nbsp;|&nbsp; 
-                <i class="bi bi-folder2"></i> Vývoj
+              <!-- Pevný fix pro fotku s Tuxem -->
+              <div class="text-center mb-4" style="background-color: #1a1a1a; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+                <img src="../assets/img/portfolio/linux_penguin.jpeg" alt="VMware vs VirtualBox" class="img-fluid" style="max-height: 380px; object-fit: contain; padding: 15px 0; width: 100%;">
+              </div>
+              
+              <div class="text-white-50 small mb-3">
+                <i class="bi bi-calendar-event me-1" style="color: #e04f4f;"></i> 9. Června 2026 &nbsp;|&nbsp; 
+                <i class="bi bi-folder2 me-1" style="color: #e04f4f;"></i> Virtualizace
               </div>
 
-              <h2 class="fw-bold mb-4">Jak efektivně strukturovat kód v Bootstrapu</h2>
+              <h2 class="fw-bold mb-4 text-white" style="font-family: 'Raleway', sans-serif;">VirtualBox vs. VMware: Proč jsem pro svou IT laborku přesedlal na VMware?</h2>
 
-              <p>Zde bude tvůj kompletní text článku. Bootstrap nabízí skvělé typografické prvky, takže můžeš psát odstavce, vkládat citace nebo podnadpisy.</p>
+              <p class="text-white-50">Jako student IT nebo začínající Linux admin dřív nebo později narazíš na potřebu postavit si vlastní testovací prostředí. Chceš zkoušet nové distribuce, simulovat sítě nebo testovat skripty bez rizika, že si kompletně odpálíš vlastní Windows. První logická volba většiny lidí je VirtualBox. Je zdarma, je populární a jednoduše se instaluje. Jenže jakmile začneš stavět složitější infrastrukturu, narazíš na zeď.</p>
               
-              <h4 class="fw-bold mt-4">Používejte mřížku s rozmyslem</h4>
-              <p>Správné zanořování kontejnerů a řádků (`container`, `row`, `col`) dokáže ušetřit spoustu přepisování v CSS stylech.</p>
+              <p class="text-white-50">Přesně to se stalo i mně, když jsem pracoval na svých síťových projektech a integraci SOCu. Po týdnech zasekávání a padání virtuálních strojů jsem přešel na VMware. Tady jsou hlavní důvody, proč bys to měl udělat taky.</p>
 
-              <blockquote class="p-3 bg-light border-start border-4 border-primary my-4" style="font-style: italic;">
-                "Čistý kód je základem úspěšného a snadno udržovatelného webu."
+              <h4 class="fw-bold mt-4 text-white">1. Masivní rozdíl ve výkonu a stabilitě</h4>
+              <p class="text-white-50">VMware má mnohem lépe zvládnutou architekturu hypervizoru a efektivněji komunikuje přímo s procesorem a RAM pamětí tvého hostitelského počítače. V praxi to znamená, že Linuxové distribuce s grafickým rozhraním, ale i čistě terminálové servery, běží ve VMware znatelně plynuleji. VirtualBox měl u mě tendenci při vyšší zátěži zamrzat, což při testování skriptů fakt nechceš.</p>
+
+              <h4 class="fw-bold mt-4 text-white">2. Pokročilá správa sítí (Virtual Networking)</h4>
+              <p class="text-white-50">Pokud tě zajímá kyberbezpečnost, sítě jsou pro tebe základ. Ve VirtualBoxu je nastavení vnitřních sítí občas za trest a konektivita ráda padá. VMware ti dává do ruky perfektní nástroje na izolaci sítí (LAN segmenty). Můžeš si tak bezpečně nasimulovat oddělenou síť pro útočníka a kompletně izolovanou podsíť s napadnutelným serverem, aniž by hrozilo, že ti něco uteče do domácí Wi-Fi.</p>
+
+              <blockquote class="p-3 my-4 custom-blockquote">
+                "Když stavíš laborku pro simulaci kybernetických útoků, stabilní a izolovaná síť je to nejdůležitější. VMware tě v tomhle nenechá ve štychu."
               </blockquote>
 
-              <p>Na závěr nezapomeňte kód validovat a kontrolovat zobrazení na mobilních zařízeních.</p>
+              <h4 class="fw-bold mt-4 text-white">3. Spolehlivé Snapshoty (Snímky systému)</h4>
+              <p class="text-white-50">Znáš to – vrtáš se v konfigurácích Linuxu, zkoušíš nový automatizační skript v Pythonu, něco poděláš a systém už nenaběhne. VMware Workstation Pro má snapshoty zvládnuté na jedničku. Klikneš, uděláš snímek před akcí, a když systém odpálíš, jedním klikem ho za sekundu vrátíš zpět.</p>
+
+              <h4 class="fw-bold mt-4 text-white">4. Standard z reálné praxe</h4>
+              <p class="text-white-50">Až jednou půjdeš na pohovor na pozici Linux Admina nebo Security Analytika, nikdo v korporátu nebude provozovat servery na VirtualBoxu. Všude se jede VMware (vSphere, ESXi) nebo KVM. Když ukážeš, že už teď stavíš své laborky na platformě od VMware, máš u firem obrovské plus.</p>
+
+              <p class="mt-4 text-white-50"><strong class="text-white">Závěr:</strong> VirtualBox je super na rychlé otestování jednoho ISO souboru. Ale pokud to s IT myslíš vážně, chceš automatizovat a budovat laborky, VMware je úplně jiná liga.</p>
             </article>
           </div>
 
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="sidebar bg-white p-4 shadow-sm" style="border-radius: 12px;">
-              <h4 class="fw-bold mb-3">Kategorie</h4>
+          <!-- ODSTRANĚNO: data-aos atributy -->
+          <div class="col-lg-4">
+            <div class="sidebar sidebar-card p-4 shadow-sm">
+              <h4 class="fw-bold mb-3 text-white">O autorovi</h4>
+              <p class="small text-white-50 mb-4">Jsem Václav Czepczor, student IT, junior Linux admin a nadšenec do kyberbezpečnosti.</p>
+              
+              <h4 class="fw-bold mb-3 text-white">Kategorie</h4>
               <ul class="list-unstyled">
-                <li class="mb-2"><a href="#" class="text-dark text-decoration-none"><i class="bi bi-chevron-right text-primary"></i> Vývoj (1)</a></li>
-                <li class="mb-2"><a href="#" class="text-dark text-decoration-none"><i class="bi bi-chevron-right text-primary"></i> Design (1)</a></li>
-                <li class="mb-2"><a href="#" class="text-dark text-decoration-none"><i class="bi bi-chevron-right text-primary"></i> Marketing (1)</a></li>
+                <li class="mb-2"><a href="#" class="category-link"><i class="bi bi-chevron-right me-1" style="color: #e04f4f;"></i> Virtualizace (1)</a></li>
+                <li class="mb-2"><a href="#" class="category-link"><i class="bi bi-chevron-right me-1" style="color: #e04f4f;"></i> Kyberbezpečnost (0)</a></li>
+                <li class="mb-2"><a href="#" class="category-link"><i class="bi bi-chevron-right me-1" style="color: #e04f4f;"></i> Linux (0)</a></li>
               </ul>
             </div>
           </div>
@@ -96,14 +154,19 @@
 
   </main>
 
-  <footer id="footer" class="footer">
-    <div class="container copyright text-center mt-4">
-      <p>© <strong class="px-1 sitename">Václav Czepczor</strong> Všechna práva vyhrazena</p>
+  <footer id="footer" class="footer" style="background-color: #121212; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+    <div class="container copyright text-center py-3">
+      <p class="text-white-50 mb-0">© <strong class="px-1 sitename text-white">Václav Czepczor</strong> Všechna práva vyhrazena</p>
     </div>
   </footer>
 
+  <!-- Zahrnutí potřebných skriptů -->
   <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="../assets/js/main.js"></script>
 </body>
 </html>
