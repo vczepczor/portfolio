@@ -440,10 +440,10 @@
                       <h4>Face recognition door lock</h4>
                     </div>
                     <div class="portfolio-actions">
-                      <a href="assets/img/portfolio/face_recognition_1.jpg" class="glightbox portfolio-link">
+                      <a href="portfolio-items/smart-lock.html" class="glightbox portfolio-link">
                         <i class="bi bi-plus-lg"></i>
                       </a>
-                      <a href="/portfolio-items/smart-lock.html" class="portfolio-details">
+                      <a href="portfolio-items/smart-lock.html" class="portfolio-details">
                         <i class="bi bi-arrow-right"></i>
                       </a>
                     </div>
@@ -470,10 +470,10 @@
                       <h4>SOC integration</h4>
                     </div>
                     <div class="portfolio-actions">
-                      <a href="assets/img/portfolio/linux_penguin.jpeg" class="glightbox portfolio-link">
+                      <a href="portfolio-items/siem-vpn-vmware.html" class="glightbox portfolio-link">
                         <i class="bi bi-plus-lg"></i>
                       </a>
-                      <a href="/portfolio-items/siem-vpn-vmware.html" class="portfolio-details">
+                      <a href="portfolio-items/siem-vpn-vmware.html" class="portfolio-details">
                         <i class="bi bi-arrow-right"></i>
                       </a>
                     </div>
@@ -576,7 +576,7 @@
           </div>
 
           <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form">
+            <form id="fs-contact-form" action="https://formspree.io/f/xvznrrng" method="post" class="php-email-form">
               <div class="row gy-4">
 
                 <div class="col-md-6">
@@ -605,6 +605,59 @@
 
               </div>
             </form>
+
+            <!-- Tento integrovaný skript se postará o odesílání na Formspree a oživí vestavěné hlášky -->
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                const form = document.getElementById('fs-contact-form');
+                if (!form) return;
+                
+                // Klonování objektu odstraní chybový odesílací skript šablony, vzhled zůstává netknutý
+                const clonedForm = form.cloneNode(true);
+                form.parentNode.replaceChild(clonedForm, form);
+
+                const loading = clonedForm.querySelector('.loading');
+                const errorMessage = clonedForm.querySelector('.error-message');
+                const sentMessage = clonedForm.querySelector('.sent-message');
+
+                clonedForm.addEventListener('submit', function (e) {
+                  e.preventDefault();
+
+                  // Aktivace animací šablony pomocí nativní třídy d-block
+                  loading.classList.add('d-block');
+                  errorMessage.classList.remove('d-block');
+                  sentMessage.classList.remove('d-block');
+                  errorMessage.innerHTML = "";
+
+                  fetch(clonedForm.action, {
+                    method: clonedForm.method,
+                    body: new FormData(clonedForm),
+                    headers: {
+                      'Accept': 'application/json'
+                    }
+                  }).then(response => {
+                    loading.classList.remove('d-block');
+                    if (response.ok) {
+                      sentMessage.classList.add('d-block');
+                      clonedForm.reset(); // Vymaže text z políček po úspěchu
+                    } else {
+                      response.json().then(data => {
+                        if (data && data.errors) {
+                          errorMessage.innerHTML = data.errors.map(err => err.message).join(", ");
+                        } else {
+                          errorMessage.innerHTML = "Formulář se nepodařilo odeslat. Zkontrolujte Formspree.";
+                        }
+                        errorMessage.classList.add('d-block');
+                      });
+                    }
+                  }).catch(err => {
+                    loading.classList.remove('d-block');
+                    errorMessage.innerHTML = "Síťová chyba. Pokud testujete lokálně z disku, spusťte projekt přes VS Code Live Server.";
+                    errorMessage.classList.add('d-block');
+                  });
+                });
+              });
+            </script>
           </div>
 
         </div>
